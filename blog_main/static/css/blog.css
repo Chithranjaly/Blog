@@ -86,3 +86,93 @@ h6 {
 .blog-footer p:last-child {
   margin-bottom: 0;
 }
+
+
+
+/* About Page Title */
+#titleh1 {
+  text-align: center;
+}
+
+.aboutus-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.mission {
+  flex: 1 1 100px;
+  padding: 10px;
+}
+
+
+.vision {
+  flex: 1 1 100px;
+  padding: 10px;
+
+}
+
+/* .vision p {
+  text-align: justify;
+
+} */
+
+.mission p,
+.vision p {
+  margin: 4px;
+  text-align: justify;
+}
+
+.about-image {
+  flex: 1 1 100px;
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 400px;
+  object-fit: cover;
+  margin: 10px;
+  padding-top: 10px;
+  justify-content: center;
+}
+
+#subtitle {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: mediumslateblue;
+}
+
+/* Make sure Font Awesome is loaded in <head>: */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css');
+
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.search-container {
+  position: relative;
+
+}
+
+.search-container i {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  /* transform: translateY('50%') */
+  color: #827b7b;
+}
+
+.search-container input {
+  padding: 5px 5px 5px 30px;
+  border-radius: 10px;
+  border-color: rgb(237, 229, 229);
+}
+
+.submitbtn button {
+  display: inline;
+  border-radius: 5px;
+  width: 30px;
+  height: 20px;
+}

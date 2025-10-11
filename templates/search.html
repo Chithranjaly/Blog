@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<h3 class="text-uppercase" style="color: cadetblue;"> Post matched for the keyword - {{keyword}}</h3>
+
+<div class="row mb-2">
+    {% if blogs %}
+    {% for post in blogs %}
+    <div class="col-md-6">
+        <div class="card border-0">
+            <div class="card-body">
+                <a href="{%  url 'blogs' post.slug%}" class="text-dark">
+                    <h3>{{post.title}}</h3>
+                </a>
+                <small class="mb-1 text-muted">{{post.created_at | timesince }} ago | {{post.author}}</small>
+                <p class="card-text">{{post.short_description }}.</p>
+                <p class="card-text">{{post.blog_body}}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <P>Posts not found</P>
+    {% endif %}
+
+</div>
+
+
+
+</div><!-- /.row -->
+
+
+</div>
+
+
+{% endblock %}

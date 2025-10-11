@@ -2,20 +2,15 @@
 
 {% block content %}
 
-{% for post in featured_posts %}
-{% if forloop.first %}
-<div class="jumbotron p-3 p-md-5 text-white rounded bg-dark"
-    style="background-image: url({{post.featured_image.url}});background-blend-mode: overlay;background-size:cover;">
-    <div class="col-md-8 px-0">
-        <h1 class="display-4 font-italic">{{post.title}}</h1>
-        <p class="lead my-3">{{post.short_description}}</p>
-        <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
-    </div>
-</div>
-{% endif %}
-{% endfor %}
 
 <h3 class="text-uppercase text-warning">Category- {{category}}</h3>
+
+{% for post in posts %}
+{% if forloop.first %}
+
+<img class="img-fluid" src="{{post.featured_image.url}}" width="25%" height="25%" />
+{% endif %}
+{% endfor %}
 
 <div class="row mb-2">
     {% if posts %}
@@ -23,7 +18,9 @@
     <div class="col-md-6">
         <div class="card border-0">
             <div class="card-body">
-                <h3>{{posts.title}}</h3>
+                <a href="{%  url 'blogs' posts.slug%}" class="text-dark">
+                    <h3>{{posts.title}}</h3>
+                </a>
                 <small class="mb-1 text-muted">{{posts.created_at | timesince }} ago | {{posts.author}}</small>
                 <p class="card-text">{{posts.short_description | truncatechars:150 }}.</p>
             </div>

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h1 id="titleh1">{{aboutus.title}}</h1>
+<section class="aboutus-container">
+    <div class="mission">
+        <h2 id="subtitle">Our Mission</h2>
+        <p>{{aboutus.mission}}</p>
+    </div>
+    <div class="vision">
+        <h2 id="subtitle">Our Vision</h2>
+
+        <p>{{aboutus.vision}}</p>
+    </div>
+    <div class="about-image">
+        <img src="{% static 'images/bg1.jpeg' %}" />
+    </div>
+</section>
+
+{% endblock %}
