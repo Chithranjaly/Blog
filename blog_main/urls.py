@@ -26,6 +26,11 @@ urlpatterns = [
     path('about/', views.aboutUs, name="about"),
     path('search/', views.searchblog, name='search'),
     path('', views.home, name="home"),
+    path('register/', views.register, name="register"),
+    path('login/', views.login, name="login"),
+    path('logout/', views.logout, name="logout"),
+
+
 
 
     path('category/', include('blogs.urls')),
