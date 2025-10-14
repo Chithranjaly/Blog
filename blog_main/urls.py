@@ -30,11 +30,12 @@ urlpatterns = [
     path('login/', views.login, name="login"),
     path('logout/', views.logout, name="logout"),
 
-
+    path('dashboard/', include('dashboard.urls')),
 
 
     path('category/', include('blogs.urls')),
     path('<slug:slug>/', BlogView.blogs, name='blogs'),
+
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

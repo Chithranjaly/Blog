@@ -176,3 +176,15 @@ h6 {
   width: 30px;
   height: 20px;
 }
+
+#dashboard_nav a:hover,
+#dashboard_nav a.active {
+  background-color: rgb(182, 182, 240);
+  color: white;
+}
+
+#dashboard_nav a {
+  border: #ece3e3;
+  border-radius: 2px;
+
+}
