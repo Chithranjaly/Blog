@@ -2,9 +2,12 @@
 <div class="row">
     <div class="col-md-3">
         <div id="dashboard_nav" class="nav flex-column nav-pills bg-light" aria-orientation="vertical">
-            <a href="" class="nav-link text-dark">Profile</a>
-            <a href="{% url 'categories'%}" class="nav-link text-dark ">Categories</a>
-            <a href="" class=" nav-link text-dark">Blogs</a>
+            <a href="{% url 'dashboard' %}"
+                class="nav-link text-dark {% if request.path == '/dashboard/' %} active {% endif %}">Dashboard</a>
+            <a href="{% url 'categories'%}"
+                class="nav-link text-dark {% if '/categories/' in request.path %}active{% endif %} ">Categories</a>
+            <a href="{% url 'posts' %}"
+                class=" nav-link text-dark {% if '/posts/' in request.path %}active{% endif %}">Blogs</a>
             <!-- <a href="" class="nav-link text-dark bg-primary">Users</a>  -->
 
             <a href="" class="nav-link text-dark">Logout</a>

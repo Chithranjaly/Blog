@@ -177,7 +177,12 @@ h6 {
   height: 20px;
 }
 
-#dashboard_nav a:hover,
+#dashboard_nav a:hover {
+  background-color: rgb(157, 198, 239);
+  color: white;
+
+}
+
 #dashboard_nav a.active {
   background-color: rgb(182, 182, 240);
   color: white;

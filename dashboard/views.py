@@ -2,8 +2,9 @@ from django.shortcuts import get_object_or_404, redirect, render
 
 from blogs.models import Blog, Category
 from django.contrib.auth.decorators import login_required
+from django.template.defaultfilters import slugify
 
-from .forms import CategoryForm
+from .forms import BlogPostForm, CategoryForm
 
 
 # Create your views here.
@@ -60,3 +61,56 @@ def delete_category(request, pk):
     category = get_object_or_404(Category, pk=pk)
     category.delete()
     return redirect('categories')
+
+
+def posts(request):
+    posts = Blog.objects.all()
+    context = {
+        'posts': posts,
+    }
+    return render(request, 'dashboards/blogposts.html', context)
+
+
+def add_posts(request):
+    if request.method == 'POST':
+        form = BlogPostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
+            title = form.cleaned_data['title']
+            post.slug = slugify(title) + '-' + str(post.id)
+            post.save()
+            return redirect('posts')
+        else:
+            print("form is invalid")
+            print(form.errors)
+    form = BlogPostForm()
+    context = {
+        'form': form,
+    }
+    return render(request, 'dashboards/addPost.html', context)
+
+
+def edit_posts(request, pk):
+    post = get_object_or_404(Blog, pk=pk)
+    if request.method == 'POST':
+        form = BlogPostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            post = form.save()
+            title = form.cleaned_data['title']
+            post.slug = slugify(title) + '-'+str(post.id)
+            post.save()
+            return redirect('posts')
+    form = BlogPostForm(instance=post)
+    context = {
+        'form': form,
+        'post': post,
+    }
+    return render(request, 'dashboards/editPost.html', context)
+
+
+def delete_post(request, pk):
+    post = get_object_or_404(Blog, pk=pk)
+    post.delete()
+    return redirect('posts')
