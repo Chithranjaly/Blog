@@ -4,6 +4,13 @@
         <div id="dashboard_nav" class="nav flex-column nav-pills bg-light" aria-orientation="vertical">
             <a href="{% url 'dashboard' %}"
                 class="nav-link text-dark {% if request.path == '/dashboard/' %} active {% endif %}">Dashboard</a>
+
+            {% if perms.auth.view_user %}
+            <a href="{% url 'users' %}"
+                class="nav-link text-dark {% if '/users/' in request.path   %} active {% endif %}">Users</a>
+            {% endif %}
+
+
             <a href="{% url 'categories'%}"
                 class="nav-link text-dark {% if '/categories/' in request.path %}active{% endif %} ">Categories</a>
             <a href="{% url 'posts' %}"
