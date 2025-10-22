@@ -193,3 +193,17 @@ h6 {
   border-radius: 2px;
 
 }
+
+/* For tablets and smaller */
+@media (max-width: 768px) {
+  .navbar ul {
+    flex-direction: column;
+  }
+}
+
+/* For mobile */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+}
