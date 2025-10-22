@@ -50,7 +50,9 @@ def register(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('register')
+            return redirect('login')
+        else:
+            messages.error(request, "Something went wrong! Please try again")
     else:
         form = RegistrationForm()
     context = {
@@ -70,9 +72,14 @@ def login(request):
             user = auth.authenticate(username=username, password=password)
             if user is not None:
                 auth.login(request, user)
-            return redirect('home')
+                return redirect('home')
 
-    form = AuthenticationForm()
+            else:
+                messages.error(request, "Invalid username or password")
+        else:
+            messages.error(request, "Invalid username or password")
+    else:
+        form = AuthenticationForm()
     context = {
         'form': form,
     }
