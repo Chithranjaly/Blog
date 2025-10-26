@@ -28,6 +28,7 @@ def blogs(request, slug):
         comment.blog = single_blog
         comment.comment = request.POST['comment']
         comment.save()
+        
         return HttpResponseRedirect(request.path_info)
 
     comments = Comment.objects.filter(blog=single_blog)
